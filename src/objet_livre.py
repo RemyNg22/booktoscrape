@@ -23,3 +23,7 @@ class Livre:
             return "Disponible"
         else:
             return "Indisponible"
+        
+    def reset_index_liste(df):
+        df.index = df.index + 1
+        return df

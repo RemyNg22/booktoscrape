@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
-from objet_livre import Livre
+from src.objet_livre import Livre
 import pandas as pd
 
 url = "https://books.toscrape.com/"
@@ -48,7 +48,7 @@ def ajout_livre():
                 note = Livre.note_converti(notation)
                 in_stock = l.find("p", class_="instock availability").get_text(strip=True).lower()
                 stock = Livre.en_stock(in_stock)
-                
+
                 try:
                     prix_ht = float(prix_ht)
                     livre = Livre(nom_livre, prix_ht, note, stock)
@@ -70,5 +70,6 @@ def ajout_livre():
             else:
                 break
     
-    return pd.DataFrame(liste_livre)
+    df_liste = pd.DataFrame(liste_livre)
+    return Livre.reset_index_liste(df_liste)
 
