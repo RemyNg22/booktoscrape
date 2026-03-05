@@ -26,10 +26,30 @@ def run_menu(df):
             print("Veuillez entrer un nombre valide")
             continue
 
-        match choix:
 
-            case 1:
-                print(df)
+        if choix == 1:
+            print(df)
 
-            case 2:
-                print(stats['livres_mieux_notes'])
+        if choix == 2:
+            print(stats['livres_mieux_notes'])
+
+        if choix == 3:
+            print(stats['livres_moins_notes'])
+            
+        if choix == 4:
+            print(stats['livres_moins_chers'])
+
+        if choix == 5:
+            print(stats['livres_plus_chers'])
+
+        if choix == 6:
+            print(f"La note moyenne des livres de la bibliothèque est de : {stats['livres_note_moyenne']}/5.")
+
+        if choix == 7:
+            print(f"La note médiane des livres de la bibliothèque est de : {stats['livres_note_mediane']}/5.")
+
+        if choix == 8:
+            print(f"Le prix moyen des livres de la bibliothèque est de : {stats['livres_prix_moyen']}€.")
+
+        if choix == 9:
+            print(f"Le prix médian des livres de la bibliothèque est de : {stats['livres_prix_median']}€.")     

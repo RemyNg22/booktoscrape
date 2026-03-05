@@ -9,6 +9,7 @@ class Livre:
     def prix_ttc(self, taux=0.15):
         return self.prix * (1+taux)
     
+    @staticmethod
     def note_converti(note_brute):
         mapping_note = {
         "one" : 1,
@@ -18,12 +19,9 @@ class Livre:
         "five" : 5}
         return mapping_note[note_brute]
     
+    @staticmethod
     def en_stock(stock):
         if stock == "in stock":
             return "Disponible"
         else:
             return "Indisponible"
-        
-    def reset_index_liste(df):
-        df.index = df.index + 1
-        return df

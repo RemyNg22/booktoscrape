@@ -3,11 +3,13 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 from src.objet_livre import Livre
 import pandas as pd
+from src.utils_df import reset_index_liste
 
 url = "https://books.toscrape.com/"
 
 def get_soup(url):
-    html = requests.get(url).text
+    response = requests.get(url, timeout=10)
+    html = response.text
     return BeautifulSoup(html, "html.parser")
 
 def scrapping_cat():
@@ -71,5 +73,5 @@ def ajout_livre():
                 break
     
     df_liste = pd.DataFrame(liste_livre)
-    return Livre.reset_index_liste(df_liste)
+    return reset_index_liste(df_liste)
 
