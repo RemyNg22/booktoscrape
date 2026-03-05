@@ -8,7 +8,7 @@ https://books.toscrape.com
 - Nettoyage et structuration des données
 - Analyse statistique (prix et notes)
 - Visualisations avec matplotlib
-- Export CSV personnalisable
+- Export CSV
 
 ## Stack technique
 - Python
