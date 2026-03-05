@@ -30,7 +30,7 @@ def scrapping_cat():
 
     return liste_categories
 
-def ajout_livre():
+def ajout_livre()-> pd.DataFrame:
     liste_cat = scrapping_cat()
     liste_livre = []
 

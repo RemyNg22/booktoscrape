@@ -1,9 +1,17 @@
 from src.stats import statistiques
+from src.visualisation import (repartition_note, distribution_prix)
+from src.export import export_csv
+import matplotlib.pyplot as plt
+
 
 def run_menu(df):
-    stats = statistiques()
 
+    if df.empty:
+        print("Le DataFrame est vide. Aucune donnée disponible.")
+        return
+    
     while True:
+        stats = statistiques(df)
         print("\n=== Bibliothèque BOOKS TO SCRAPE ===")
         print("1 - Voir tous les livres")
         print("2 - Voir les livres les mieux notés")
@@ -30,26 +38,45 @@ def run_menu(df):
         if choix == 1:
             print(df)
 
-        if choix == 2:
+        elif choix == 2:
             print(stats['livres_mieux_notes'])
 
-        if choix == 3:
+        elif choix == 3:
             print(stats['livres_moins_notes'])
             
-        if choix == 4:
+        elif choix == 4:
             print(stats['livres_moins_chers'])
 
-        if choix == 5:
+        elif choix == 5:
             print(stats['livres_plus_chers'])
 
-        if choix == 6:
+        elif choix == 6:
             print(f"La note moyenne des livres de la bibliothèque est de : {stats['livres_note_moyenne']}/5.")
 
-        if choix == 7:
+        elif choix == 7:
             print(f"La note médiane des livres de la bibliothèque est de : {stats['livres_note_mediane']}/5.")
 
-        if choix == 8:
+        elif choix == 8:
             print(f"Le prix moyen des livres de la bibliothèque est de : {stats['livres_prix_moyen']}€.")
 
-        if choix == 9:
+        elif choix == 9:
             print(f"Le prix médian des livres de la bibliothèque est de : {stats['livres_prix_median']}€.")     
+
+        elif choix == 10:
+            repartition_note(df)
+            plt.show()
+
+        elif choix == 11:
+            distribution_prix(df)
+            plt.show()
+
+        elif choix == 12:
+            export_csv(df)
+            print("CSV exporté avec succès (dossier data/).")
+
+        elif choix == 13:
+            print("Au revoir.")
+            break
+
+        else:
+            print("Choix invalide.")
